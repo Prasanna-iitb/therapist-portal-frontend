@@ -1,0 +1,284 @@
+/* Header styles will go here */
+
+.header {
+  position: absolute;
+  width: 100%;
+  height: 64px;
+  left: 0px;
+  top: 0px;
+  background: linear-gradient(90deg, #76ADA8 0%, #0E5851 100%);
+}
+
+/* Left Side */
+.header-left {
+  position: absolute;
+  width: 341px;
+  height: 64px;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 32px;
+  gap: 10px;
+  width: 190px;
+  height: 64.5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  width: 126px;
+  height: 32.5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.brain-icon {
+  width: 26px;
+  height: 32.5px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.logo-text {
+  width: 92px;
+  height: 28px;
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* Navigation Container */
+.nav-container {
+  width: 151px;
+  height: 64px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  position: absolute;
+  width: 151px;
+  height: 64px;
+  left: 190px;
+  top: 0px;
+}
+
+.nav-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px 16px;
+  gap: 10px;
+  width: 72px;
+  height: 64px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+  position: relative;
+}
+
+.nav-item-wrapper.clients {
+  width: 79px;
+  order: 1;
+  flex-grow: 0;
+}
+
+.nav-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  height: 20px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.nav-link {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #FFFFFF;
+  border-radius: 2px;
+}
+
+.settings-btn {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  right: 80px;
+  top: 14px;
+  background: transparent;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+.settings-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 8px;
+  top: 8px;
+}
+
+.user-avatar-wrapper {
+  position: absolute;
+  right: 32px;
+  top: 16px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: #CCFBF1;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.user-avatar span {
+  position: absolute;
+  width: 17px;
+  height: 16px;
+  left: 7px;
+  top: 8px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11.9px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #115E59;
+}
+
+.user-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 240px;
+  z-index: 1000;
+}
+
+.user-menu-header {
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.user-menu-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-menu-info {
+  flex: 1;
+}
+
+.user-menu-name {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.user-menu-email {
+  font-family: 'Inter';
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.user-menu-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0 8px;
+}
+
+.user-menu-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: 'Inter';
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+}
+
+.user-menu-item:hover {
+  background: #f3f4f6;
+}
+
+.user-menu-item.logout {
+  color: #dc2626;
+  border-radius: 0 0 8px 8px;
+}
+
+.user-menu-item.logout:hover {
+  background: #fee2e2;
+}
+}

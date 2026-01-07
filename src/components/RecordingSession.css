@@ -1,0 +1,215 @@
+.recording-session {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 64px);
+  top: 64px;
+  left: 0;
+  background: #F9FAFB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  overflow-y: auto;
+}
+
+.recording-header {
+  width: 864px;
+  max-width: 100%;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.recording-header h1 {
+  font-family: 'Inter';
+  font-weight: 700;
+  font-size: 25.5px;
+  line-height: 36px;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.client-name {
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 28px;
+  color: #0D9488;
+  margin: 0 0 4px 0;
+}
+
+.session-number {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 13.6px;
+  line-height: 24px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.recording-container {
+  width: 864px;
+  max-width: 100%;
+  min-height: 478px;
+  background: #FFFFFF;
+  border: 1px solid #F3F4F6;
+  box-shadow: 0px 8px 10px -6px rgba(229, 231, 235, 0.5), 0px 20px 25px -5px rgba(229, 231, 235, 0.5);
+  border-radius: 16px;
+  padding: 49px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recording-content {
+  width: 100%;
+  max-width: 766px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  font-family: 'Inter';
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 60px;
+  color: #111827;
+  margin: 32px 0 32px 0;
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 64px;
+  margin: 32px 0;
+}
+
+.waveform-bar {
+  width: 6px;
+  background: rgba(20, 184, 166, 0.6);
+  border-radius: 9999px;
+  transition: height 0.1s ease, opacity 0.1s ease;
+}
+
+.recording-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.cancel-btn {
+  background: transparent;
+  border: none;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: #9CA3AF;
+  cursor: pointer;
+  padding: 20px 16px;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #F3F4F6;
+}
+
+.pause-btn {
+  width: 64px;
+  height: 64px;
+  background: #CCFBF1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.pause-btn:hover {
+  background: #99F6E4;
+}
+
+.pause-btn:active {
+  transform: scale(0.95);
+}
+
+.pause-btn.paused {
+  background: #CCFBF1;
+}
+
+.pause-btn.paused:hover {
+  background: #99F6E4;
+}
+
+.stop-btn {
+  width: 64px;
+  height: 64px;
+  background: #DC2626;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px -4px rgba(239, 68, 68, 0.2), 0px 10px 15px -3px rgba(239, 68, 68, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.stop-btn:hover {
+  background: #B91C1C;
+}
+
+.stop-btn:active {
+  transform: scale(0.95);
+}
+
+.recording-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #F9FAFB;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #6B7280;
+  margin-top: 32px;
+}
+
+.recording-dot {
+  width: 8px;
+  height: 8px;
+  background: #EF4444;
+  border-radius: 9999px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.recording-dot.paused {
+  background: #D1D5DB;
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
