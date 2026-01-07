@@ -19,6 +19,7 @@ export const fetchClients = async () => {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true',
       },
     });
 
@@ -47,6 +48,7 @@ export const getClientById = async (clientId) => {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true',
       },
     });
 
@@ -78,6 +80,7 @@ export const createClient = async (clientData) => {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
+        'ngrok-skip-browser-warning': 'true',
       },
       body: JSON.stringify(clientData),
     });

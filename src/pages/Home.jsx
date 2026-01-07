@@ -33,7 +33,8 @@ function Home() {
           try {
             const issuesResponse = await fetch(`${API_BASE_URL}/sessions/${session.session_id}/issues`, {
               headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'ngrok-skip-browser-warning': 'true',
               }
             });
             
