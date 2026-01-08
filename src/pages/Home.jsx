@@ -15,6 +15,26 @@ function Home() {
   const [isStartModalOpen, setIsStartModalOpen] = useState(false);
   const [recordingSession, setRecordingSession] = useState(null);
   const [viewingSession, setViewingSession] = useState(null); // { sessionId, isNew }
+  const [therapistName, setTherapistName] = useState('');
+
+  // Get therapist name from token
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const email = payload.email || '';
+        // Extract name from email (before @)
+        const name = email.split('@')[0];
+        // Capitalize first letter
+        const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+        setTherapistName(capitalizedName);
+      } catch (error) {
+        console.error('Error parsing token:', error);
+        setTherapistName('Therapist');
+      }
+    }
+  }, []);
 
   // Fetch sessions on component mount
   useEffect(() => {
@@ -70,7 +90,7 @@ function Home() {
           sessionNumber: `Session`,
           duration: formatDuration(session.duration),
           clientName: session.client_name || 'Unknown Client',
-          hasRecording: !!session.audio_file_path,
+          hasRecording: !!session.audio_blob_url,
           hasTranscript: session.status === 'completed',
           hasNotes: session.has_notes || false,
           keyIssues: (session.keyIssuesData || []).map(issue => issue.issue_text),
@@ -202,6 +222,26 @@ function Home() {
       const result = await response.json();
       console.log('Recording saved:', result);
       
+      // Automatically trigger transcription
+      try {
+        console.log('Triggering transcription for session:', result.session_id);
+        const transcribeResponse = await fetch(`${API_BASE_URL}/sessions/${result.session_id}/transcribe`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        
+        if (transcribeResponse.ok) {
+          const transcribeResult = await transcribeResponse.json();
+          console.log('Transcription job queued:', transcribeResult);
+        } else {
+          console.error('Failed to queue transcription:', transcribeResponse.status);
+        }
+      } catch (transcribeError) {
+        console.error('Error triggering transcription:', transcribeError);
+      }
+      
       // Reload sessions
       await loadSessions();
       
@@ -242,10 +282,12 @@ function Home() {
   }
 
   return (
-    <div className="home-page">
-      <div className="home-header">
+<div
+  className="home-page"
+  
+>      <div className="home-header" style={{ marginLeft: "32px" }}>
         <h1>Home</h1>
-        <p>Welcome back, Dr. Smith</p>
+        <p>Welcome back, {therapistName}</p>
       </div>
 
       <h2 className="sessions-title">Sessions Taken</h2>

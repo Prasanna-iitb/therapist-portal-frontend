@@ -16,10 +16,10 @@ export const fetchClients = async () => {
     const token = getAuthToken();
     const response = await fetch(`${API_BASE_URL}/clients`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
-        'ngrok-skip-browser-warning': 'true',
       },
     });
 
@@ -45,6 +45,7 @@ export const getClientById = async (clientId) => {
     const token = getAuthToken();
     const response = await fetch(`${API_BASE_URL}/clients/${clientId}`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -77,10 +78,10 @@ export const createClient = async (clientData) => {
     const token = getAuthToken();
     const response = await fetch(`${API_BASE_URL}/clients`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
-        'ngrok-skip-browser-warning': 'true',
       },
       body: JSON.stringify(clientData),
     });
@@ -108,6 +109,7 @@ export const updateClient = async (clientId, updateData) => {
     const token = getAuthToken();
     const response = await fetch(`${API_BASE_URL}/clients/${clientId}`, {
       method: 'PUT',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
@@ -137,6 +139,7 @@ export const deleteClient = async (clientId) => {
     const token = getAuthToken();
     const response = await fetch(`${API_BASE_URL}/clients/${clientId}`, {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,

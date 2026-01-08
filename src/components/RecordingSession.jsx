@@ -49,7 +49,7 @@ function RecordingSession({ clientName, sessionNumber, onCancel, onComplete }) {
     if (streamRef.current) {
       streamRef.current.getTracks().forEach(track => track.stop())
     }
-    if (audioContextRef.current) {
+    if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
       audioContextRef.current.close()
     }
   }

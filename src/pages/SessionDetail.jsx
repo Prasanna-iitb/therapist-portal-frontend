@@ -16,6 +16,8 @@ function SessionDetail({ sessionId, onBack, isNewSession = false }) {
   const [transcriptSearch, setTranscriptSearch] = useState('')
   const [showToast, setShowToast] = useState(isNewSession)
   const [isSaving, setIsSaving] = useState(false)
+  const [audioUrl, setAudioUrl] = useState(null)
+  const [audioLoading, setAudioLoading] = useState(false)
   const audioRef = useRef(null)
   const notesRef = useRef(null)
 
@@ -24,6 +26,7 @@ function SessionDetail({ sessionId, onBack, isNewSession = false }) {
     fetchTranscript()
     fetchNotes()
     fetchIssues()
+    fetchAudio()
   }, [sessionId])
 
   // Update notes editor only when first loaded from server (not on every keystroke)
@@ -45,6 +48,35 @@ function SessionDetail({ sessionId, onBack, isNewSession = false }) {
       setSession(data)
     } catch (error) {
       console.error('Error fetching session:', error)
+    }
+  }
+
+  const fetchAudio = async () => {
+    try {
+      setAudioLoading(true)
+      const token = localStorage.getItem('token')
+      console.log('Fetching audio for session:', sessionId)
+      
+      const response = await fetch(`${API_BASE_URL}/sessions/${sessionId}/audio`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        console.log('Audio metadata received:', data)
+        setAudioUrl(data.audio_url)
+        if (data.audio_duration && audioRef.current) {
+          audioRef.current.duration = data.audio_duration
+        }
+      } else {
+        console.error('Failed to fetch audio:', response.status, response.statusText)
+      }
+    } catch (error) {
+      console.error('Error fetching audio:', error)
+    } finally {
+      setAudioLoading(false)
     }
   }
 
@@ -446,17 +478,37 @@ function SessionDetail({ sessionId, onBack, isNewSession = false }) {
                 </div>
               </div>
 
-              <p className="audio-info">Audio recording stored securely.</p>
+              <p className="audio-info">
+                {audioLoading ? 'Loading audio...' : 'Audio recording stored securely.'}
+              </p>
 
-              {session.audio_file_path && (
+              {audioUrl ? (
                 <audio
                   ref={audioRef}
                   onTimeUpdate={handleTimeUpdate}
                   onLoadedMetadata={handleLoadedMetadata}
+                  controls={false}
+                  crossOrigin="anonymous"
+                >
+                  <source src={audioUrl} type="audio/webm" />
+                  Your browser does not support the audio element.
+                </audio>
+              ) : audioLoading ? (
+                <div className="audio-loading">Loading audio...</div>
+              ) : (
+                <div className="audio-not-available">No audio recording available for this session.</div>
+              )}
+
+              {(session.audio_url || session.audio_file_path) && (
+                <audio
+                  ref={audioRef}
+                  onTimeUpdate={handleTimeUpdate}
+                  onLoadedMetadata={handleLoadedMetadata}
+                  controls={false}
                 >
                   <source 
-                    src={`${API_BASE_URL}/sessions/${sessionId}/audio?token=${localStorage.getItem('token')}`} 
-                    type="audio/webm" 
+                    src={session.audio_url ? session.audio_url : `${API_BASE_URL}/sessions/${sessionId}/audio?token=${localStorage.getItem('token')}`}
+                    type="audio/webm"
                   />
                 </audio>
               )}

@@ -387,6 +387,8 @@
   color: #111827;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
+  margin-top: auto;
+  margin-left: auto;
 }
 
 .search-box .search-input:focus {

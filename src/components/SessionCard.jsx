@@ -52,18 +52,22 @@ function SessionCard({ session }) {
         <div className="client-name">{session.clientName}</div>
 
         <div className="session-badges">
-          <span className="badge badge-recording">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <circle cx="6" cy="6" r="4" fill="#5A9A94"/>
-            </svg>
-            Recording
-          </span>
-          <span className="badge badge-transcript">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M3 2h6M3 5h6M3 8h4" stroke="#4A90E2" strokeWidth="1.5"/>
-            </svg>
-            Transcript
-          </span>
+          {session.hasRecording && (
+            <span className="badge badge-recording">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <circle cx="6" cy="6" r="4" fill="#DC2626"/>
+              </svg>
+              Recording
+            </span>
+          )}
+          {session.hasTranscript && (
+            <span className="badge badge-transcript">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M3 2h6M3 5h6M3 8h4" stroke="#4A90E2" strokeWidth="1.5"/>
+              </svg>
+              Transcript
+            </span>
+          )}
           {session.hasNotes && (
             <span className="badge badge-notes">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">

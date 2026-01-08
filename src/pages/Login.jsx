@@ -45,8 +45,8 @@ function Login({ onLoginSuccess }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'ngrok-skip-browser-warning': 'true',
         },
+        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 

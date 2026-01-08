@@ -2,15 +2,27 @@
 
 .home-page {
   margin-top: 64px;
-  padding: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  /* Centered main content container */
+  .main-content-container {
+    max-width: 1028px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
   background-color: #F9FAFB;
   min-height: calc(100vh - 64px);
+  box-sizing: border-box;
 }
 
 .home-header {
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .home-header h1 {
@@ -36,7 +48,7 @@
 
 /* Sessions Title */
 .sessions-title {
-  margin: 0 0 20px 0;
+  margin: 0 32px 0;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
@@ -51,17 +63,21 @@
   gap: 12px;
   margin-bottom: 20px;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-input {
-  max-width: 400px;
-  padding: 10px 16px;
+  flex: 1;
+  padding: 16px 16px;
   border: 1px solid #E5E7EB;
   border-radius: 6px;
   font-family: 'Inter';
   font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
+  margin-left: 32px;
+  margin-top: 32px;
 }
 
 .search-input:focus {
@@ -89,6 +105,8 @@
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s;
+  margin-right: 32px;
+  margin-top: 32px;
 }
 
 .start-recording-btn:hover {
@@ -100,6 +118,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Session Card */
@@ -110,6 +130,8 @@
   padding: 0;
   transition: box-shadow 0.2s;
   cursor: pointer;
+  margin-left: 32px;
+  margin-right: 32px;
 }
 
 .session-card:hover {
@@ -125,6 +147,7 @@
   padding-bottom: 12px;
   border-bottom: 1px solid #F3F4F6;
   border-radius: 8px 8px 0 0;
+
 }
 
 .session-date-info {
@@ -175,6 +198,7 @@
   padding: 16px;
   background: #FFFFFF;
   border-radius: 0 0 8px 8px;
+  
 }
 
 .client-label {
@@ -205,12 +229,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
   font-family: 'Inter';
-  font-size: 11.9px;
-  font-weight: 500;
-  line-height: 20px;
+  font-size: 11.9px !important;
+  font-weight: 500 !important;
+  line-height: 20px !important;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s;
@@ -221,21 +245,21 @@
 }
 
 .badge-recording {
-  background: #F0FDFA;
-  border: 1px solid #CCFBF1;
-  color: #0F766E;
+  background: #F0FDFA !important;
+  border: 1px solid #CCFBF1 !important;
+  color: #0F766E !important;
 }
 
 .badge-transcript {
-  background: #EFF6FF;
-  border: 1px solid #DBEAFE;
-  color: #1D4ED8;
+  background: #EFF6FF !important; 
+  border: 1px solid #DBEAFE !important;
+  color: #1D4ED8 !important;
 }
 
 .badge-notes {
-  background: #FFFBEB;
-  border: 1px solid #FEF3C7;
-  color: #B45309;
+  background: #FFFBEB !important;
+  border: 1px solid #FEF3C7 !important;
+  color: #B45309 !important;
 }
 
 /* Key Issues */
