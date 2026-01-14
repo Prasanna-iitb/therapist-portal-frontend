@@ -91,7 +91,7 @@ export const createSession = async (sessionData) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-customer-id': getCustomerId(),
+        'Authorization': `Bearer ${getAuthToken()}`,
       },
       body: JSON.stringify(sessionData),
     });
@@ -120,7 +120,7 @@ export const updateSession = async (sessionId, updateData) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'x-customer-id': getCustomerId(),
+        'Authorization': `Bearer ${getAuthToken()}`,
       },
       body: JSON.stringify(updateData),
     });
@@ -148,7 +148,7 @@ export const deleteSession = async (sessionId) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'x-customer-id': getCustomerId(),
+        'Authorization': `Bearer ${getAuthToken()}`,
       },
     });
 
